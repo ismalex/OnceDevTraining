@@ -34,7 +34,10 @@ namespace OnceDev.Training.Api
             services.AddTransient<ICustomerRepository, CustomerRepository>()
                     .AddDbContext<NorthwindDbContext>(opt => opt.UseSqlServer(Configuration.GetConnectionString("northwind")));
 
+
             services.AddMediatR(typeof(GetCustomersHandler).Assembly);
+            services.AddTransient<IOrderRepository, OrderRepository>();
+                    
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
